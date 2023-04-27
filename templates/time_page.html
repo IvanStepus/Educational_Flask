@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Показать текущее время</title>
+    <script>
+        function showTime() {
+            var date = new Date();
+            var time = date.toLocaleTimeString();
+            document.getElementById('clock').textContent = time;
+        }
+
+        setInterval(showTime, 1000);
+    </script>
 </head>
 <body>
-    <h2>Time: {{ my_current_time }}</h2>
+<h1>Current time:</h1>
+<p id="clock"></p>
 </body>
 </html>
