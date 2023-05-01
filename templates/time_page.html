@@ -1,7 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Показать текущее время</title>
+{% extends 'base.html' %}
+
+{% block page_name_positon %}
+    Time
+{% endblock %}
+
+{% block data_position %}
     <script>
         function showTime() {
             var date = new Date();
@@ -11,9 +14,7 @@
 
         setInterval(showTime, 1000);
     </script>
-</head>
-<body>
-<h1>Current time:</h1>
-<p id="clock"></p>
-</body>
-</html>
+
+    <p id="clock"></p>
+
+{% endblock %}
