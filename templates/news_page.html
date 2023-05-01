@@ -1,43 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<style>
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
+{% extends 'base.html' %}
 
-    li {
-        float: left;
-    }
+{% block page_name_positon %}
+    News
+{% endblock %}
 
-    li a {
-        display: block;
-        color: #ffffff;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    li a:hover:not(.active) {
-        background-color: #111;
-    }
-
-    .active {
-        background-color: #0b9404;
-    }
-</style>
-<body>
-<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/news">News</a></li>
-    <li><a href="/time">Time</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li style="float:right"><a class="active" href="/exit">Exit</a></li>
-</ul>
-    <h1>News in Belarus<h1>
-    <h2>News in Belarus<h2>
-</body>
-</html>
+{% block data_position %}
+    <h2>News in Belarus
+    <h2>
+{% endblock %}

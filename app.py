@@ -22,6 +22,10 @@ def home_page():
 def time_page():
     return render_template('time_page.html', my_current_time=ctime())
 
+
+
+
+
 @app.route('/exit')
 def exit_page():
     return render_template('exit_page.html')
