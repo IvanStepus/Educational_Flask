@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block page_name_positon %}
+    Weather
+
+{% endblock %}
+
+{% block data_position %}
+    <div id="weather-info"></div>
+
+    <script>
+        const apiKey = "bd0c95606556b38feb2503bd6d62d298";
+        const cities = ["Warsaw", "Minsk", "Kiev"];
+        const weatherInfoDiv = document.getElementById("weather-info");
+
+        cities.forEach(city => {
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const temperature = data.main.temp;
+                    const description = data.weather[0].description;
+                    const cityInfoDiv = document.createElement("div");
+                    cityInfoDiv.innerHTML = `Температура в ${city} ${temperature} градусов Цельсия, ${description}.`;
+                    weatherInfoDiv.appendChild(cityInfoDiv);
+                })
+                .catch(error => console.log(error));
+        });
+    </script>
+
+{% endblock %}
