@@ -9,6 +9,7 @@ app = Flask(__name__)
 def news_page():
     return render_template("news_page.html")
 
+
 @app.route('/weather')
 def weather_page():
     return render_template("weather_page.html")
@@ -27,6 +28,9 @@ def time_page():
     return render_template('time_page.html', my_current_time=ctime())
 
 
+@app.route('/contact')
+def contact_page():
+    return render_template('contact_page.html')
 
 
 @app.route('/exit')
