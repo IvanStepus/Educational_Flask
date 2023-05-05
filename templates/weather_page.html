@@ -22,7 +22,7 @@
                     const temperature = data.main.temp;
                     const description = data.weather[0].description;
                     const cityInfoDiv = document.createElement("div");
-                    cityInfoDiv.innerHTML = `Температура в ${city} ${temperature} градусов Цельсия, ${description}.`;
+                    cityInfoDiv.innerHTML = `Температура в ${city} ${temperature} градусов Цельсия`;
                     weatherInfoDiv.appendChild(cityInfoDiv);
                 })
                 .catch(error => console.log(error));
