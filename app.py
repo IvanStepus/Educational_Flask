@@ -1,13 +1,14 @@
 from flask import Flask, render_template
 from time import ctime
-from utils import get_bitcoin_price
+from utils import get_bitcoin_price, get_news
 
 app = Flask(__name__)
 
 
 @app.route('/news')
-def news_page():
-    return render_template("news_page.html")
+def news():
+    news_data = get_news('2a0c54798f53408c94817e8606ba5d2a')
+    return render_template('news_page.html', news=news_data)
 
 
 @app.route('/weather')
