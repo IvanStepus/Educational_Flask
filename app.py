@@ -16,7 +16,7 @@ def weather_page():
     return render_template("weather_page.html")
 
 
-@app.route('/')
+@app.route('/home_page')
 def home_page():
     bp = get_bitcoin_price()
     ct = ctime()
