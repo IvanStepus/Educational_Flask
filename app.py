@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request
 from time import ctime
 from utils import get_bitcoin_price, get_news
 from flask_sqlalchemy import SQLAlchemy
@@ -38,8 +39,21 @@ def index():
 
 @app.route('/register', methods=('POST', 'GET'))
 def register():
-    return render_template('register_page.html', title="Registration")
+    if request.method == "POST":
+        try:
+            hash = generate_password_hash(request.form['psw'])
+            u = Users(email=request.form['email'], psw=hash)
+            db.session.add(u)
+            db.session.flush()
 
+            p = Profiles(name=request.form['name'], old=request.form['old'],
+                         city=request.form['city'], user_id=u.id)
+            db.session.add(p)
+            db.session.commit()
+        except:
+            db.session.rollback()
+            print("Ошибка добавления в БД")
+    return render_template('register_page.html', title="Registration")
 
 
 @app.route('/news')
